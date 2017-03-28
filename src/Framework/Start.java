@@ -1,5 +1,7 @@
 package Framework;
 
+import Framework.Dialogs.UserNameDialog;
+
 import java.io.IOException;
 
 /**
@@ -10,6 +12,9 @@ public class Start {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Hello World from Framework.Start");
+
+        UserNameDialog userDialog = new UserNameDialog();
+        userDialog.diplay();
 
         System.out.println(Config.get("game", "turnTimeout"));
     }
