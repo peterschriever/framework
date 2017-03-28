@@ -65,6 +65,27 @@ public class ConnectionDialog {
         System.out.println(port.getText());
     }
 
+    /*
+     * Getters and setters:
+     */
 
+    // Set IP address
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
 
+    // Set port number
+    public void setPortNumber(Integer portNumber) {
+        this.portNumber = portNumber;
+    }
+
+    // Get IP address
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    // Get port number
+    public Integer getPortNumber() {
+        return portNumber;
+    }
 }
