@@ -2,7 +2,6 @@ package Framework.Dialogs;
 
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
-
 import java.util.Optional;
 
 /**
@@ -14,7 +13,7 @@ public class UserNameDialog {
 
         // Create dialog
         TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Username creation");
+        dialog.setTitle("Create username");
         dialog.setHeaderText(null);
         dialog.setContentText("Please enter your username:");
 

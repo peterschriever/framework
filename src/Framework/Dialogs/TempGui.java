@@ -3,7 +3,6 @@ package Framework.Dialogs;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -14,12 +13,14 @@ import javafx.stage.Stage;
 public class TempGui extends Application {
 
     public UserNameDialog userDialog;
+    public ConnectionDialog connectionDialog;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         // Create username dialog
         userDialog = new UserNameDialog();
+        connectionDialog = new ConnectionDialog();
 
         primaryStage.setTitle("Temp gui for testing");
 
@@ -40,8 +41,8 @@ public class TempGui extends Application {
     }
 
     public void btn_click(){
-        userDialog.diplay();
-        System.out.println("Button pressed!");
+        //userDialog.diplay();
+        connectionDialog.diplay();
     }
 
 }
