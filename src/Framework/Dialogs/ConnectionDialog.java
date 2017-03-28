@@ -16,7 +16,7 @@ import java.util.Optional;
 public class ConnectionDialog {
 
     private String ipAddress;
-    private Integer portNumber;
+    private String portNumber;
 
     //TODO: refactor display method to smaller tasks/methods, maybe inheritance?
 
@@ -61,8 +61,11 @@ public class ConnectionDialog {
         // Start dialog
         dialog.showAndWait();
 
-        System.out.println(ip.getText());
-        System.out.println(port.getText());
+        // Set ip and port in fields
+        setIpAddress(ip.getText());
+        setPortNumber(port.getText());
+
+
     }
 
     /*
@@ -75,7 +78,7 @@ public class ConnectionDialog {
     }
 
     // Set port number
-    public void setPortNumber(Integer portNumber) {
+    public void setPortNumber(String portNumber) {
         this.portNumber = portNumber;
     }
 
@@ -85,7 +88,7 @@ public class ConnectionDialog {
     }
 
     // Get port number
-    public Integer getPortNumber() {
+    public String getPortNumber() {
         return portNumber;
     }
 }
