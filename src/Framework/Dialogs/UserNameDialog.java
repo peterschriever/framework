@@ -1,6 +1,7 @@
 package Framework.Dialogs;
 
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
 
 import java.util.Optional;
 
@@ -11,15 +12,21 @@ public class UserNameDialog {
 
     public void diplay(){
 
-        TextInputDialog dialog = new TextInputDialog("Anonymous");
+        // Create dialog
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Username creation");
-        dialog.setHeaderText("Create an username:");
+        dialog.setHeaderText(null);
         dialog.setContentText("Please enter your username:");
+
+        // Change image
+        ImageView image = new ImageView(this.getClass().getResource("username_img.png").toString());
+        dialog.setGraphic(image);
 
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
 
-        result.ifPresent(name -> System.out.println("Your name: " + name));
+        // Confirm username in terminal
+        result.ifPresent(name -> System.out.println("Your username is: " + name));
 
 
     }

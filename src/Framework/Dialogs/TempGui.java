@@ -13,8 +13,14 @@ import javafx.stage.Stage;
  */
 public class TempGui extends Application {
 
+    public UserNameDialog userDialog;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        // Create username dialog
+        userDialog = new UserNameDialog();
+
         primaryStage.setTitle("Temp gui for testing");
 
         // Button
@@ -25,8 +31,6 @@ public class TempGui extends Application {
         sp.getChildren().add(btn);
 
         Scene scene = new Scene(sp, 400, 200);
-
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -36,7 +40,7 @@ public class TempGui extends Application {
     }
 
     public void btn_click(){
-        // Do something
+        userDialog.diplay();
         System.out.println("Button pressed!");
     }
 
