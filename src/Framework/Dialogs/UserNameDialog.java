@@ -20,6 +20,8 @@ public class UserNameDialog {
 
         // Change image
         ImageView image = new ImageView(this.getClass().getResource("username_img.png").toString());
+        image.setFitHeight(40);
+        image.setFitWidth(40);
         dialog.setGraphic(image);
 
         // Traditional way to get the response value.
