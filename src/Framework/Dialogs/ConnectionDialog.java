@@ -15,6 +15,9 @@ import java.util.Optional;
 
 public class ConnectionDialog {
 
+    private String ipAddress;
+    private Integer portNumber;
+
     //TODO: refactor display method to smaller tasks/methods, maybe inheritance?
 
     public void diplay(){
@@ -61,5 +64,7 @@ public class ConnectionDialog {
         System.out.println(ip.getText());
         System.out.println(port.getText());
     }
+
+
 
 }

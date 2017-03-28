@@ -28,7 +28,5 @@ public class UserNameDialog {
 
         // Confirm username in terminal
         result.ifPresent(name -> System.out.println("Your username is: " + name));
-
-
     }
 }
