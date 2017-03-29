@@ -5,7 +5,10 @@ import javafx.scene.image.ImageView;
 import java.util.Optional;
 
 /**
- * Created by Ruben on 28-Mar-17.
+ * Class UserNameDialog
+ *
+ * @author Ruben Buisman
+ * @version 0.1 (28-03-2017)
  */
 public class UserNameDialog {
 

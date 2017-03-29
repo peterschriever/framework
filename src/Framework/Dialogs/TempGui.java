@@ -4,13 +4,14 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
 /**
- * Created by Ruben on 28-Mar-17.
+ * Class TempGui
+ *
+ * @author Ruben Buisman
+ * @version 0.1 (28-03-2017)
  */
 public class TempGui extends Application {
 
@@ -26,7 +27,7 @@ public class TempGui extends Application {
 
         primaryStage.setTitle("Temp gui for testing");
 
-        // Button
+        // Buttons
         Button btn = new Button("Username dialog");
         Button btn2 = new Button("Connection dialog");
         btn.setOnAction(e -> btnClickName());

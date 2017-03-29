@@ -7,12 +7,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
-import java.util.Optional;
-
 /**
- * Created by Ruben on 28-3-2017.
+ * Class ConnectionDialog
+ *
+ * @author Ruben Buisman
+ * @version 0.1 (28-03-2017)
  */
-
 public class ConnectionDialog {
 
     private String ipAddress;
