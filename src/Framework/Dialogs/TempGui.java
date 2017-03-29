@@ -3,6 +3,8 @@ package Framework.Dialogs;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -25,11 +27,14 @@ public class TempGui extends Application {
         primaryStage.setTitle("Temp gui for testing");
 
         // Button
-        Button btn = new Button("Test button");
-        btn.setOnAction(e -> btn_click());
+        Button btn = new Button("Username dialog");
+        Button btn2 = new Button("Connection dialog");
+        btn.setOnAction(e -> btnClickName());
+        btn2.setOnAction(e -> btnClickConnection());
 
-        StackPane sp = new StackPane();
-        sp.getChildren().add(btn);
+        BorderPane sp = new BorderPane();
+        sp.setLeft(btn);
+        sp.setRight(btn2);
 
         Scene scene = new Scene(sp, 400, 200);
         primaryStage.setScene(scene);
@@ -40,9 +45,12 @@ public class TempGui extends Application {
         Application.launch(args);
     }
 
-    public void btn_click(){
-        //userDialog.diplay();
+    public void btnClickConnection(){
         connectionDialog.diplay();
+    }
+
+    public void btnClickName(){
+        userDialog.diplay();
     }
 
 }

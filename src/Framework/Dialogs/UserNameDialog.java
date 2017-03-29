@@ -28,18 +28,23 @@ public class UserNameDialog {
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
 
+        // Set username field with lambda
+        result.ifPresent(this::setUserName);
+
         // Confirm username in terminal
-        result.ifPresent(name -> System.out.println("Your username is: " + name));
+        System.out.println(getUserName());
     }
 
     /*
      * Getters and setters:
      */
 
+    // Get username
     public String getUserName() {
         return userName;
     }
 
+    // Set username
     public void setUserName(String userName) {
         this.userName = userName;
     }

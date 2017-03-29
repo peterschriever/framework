@@ -64,8 +64,6 @@ public class ConnectionDialog {
         // Set ip and port in fields
         setIpAddress(ip.getText());
         setPortNumber(port.getText());
-
-
     }
 
     /*
