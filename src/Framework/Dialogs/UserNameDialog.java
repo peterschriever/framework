@@ -9,6 +9,8 @@ import java.util.Optional;
  */
 public class UserNameDialog {
 
+    private String userName;
+
     public void diplay(){
 
         // Create dialog
@@ -29,4 +31,18 @@ public class UserNameDialog {
         // Confirm username in terminal
         result.ifPresent(name -> System.out.println("Your username is: " + name));
     }
+
+    /*
+     * Getters and setters:
+     */
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
+
+
