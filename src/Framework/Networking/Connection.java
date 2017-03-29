@@ -28,6 +28,7 @@ public class Connection {
     }
 
     public Response sendRequest(String request) throws IOException, InterruptedException {
+        request += "\n";
         outputStream.write(request.getBytes());
         outputStream.flush();
 
@@ -36,7 +37,7 @@ public class Connection {
 
     public Response sendRequest(String request, final List<String> params) throws IOException, InterruptedException {
         for (String param : params) {
-            request += param;
+            request += " " + param;
         }
         return sendRequest(request);
     }
