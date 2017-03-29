@@ -1,7 +1,5 @@
 package Framework;
 
-import Framework.Dialogs.UserNameDialog;
-
 import java.io.IOException;
 
 /**
