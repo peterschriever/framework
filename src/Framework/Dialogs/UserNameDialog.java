@@ -42,23 +42,24 @@ public class UserNameDialog implements DialogInterface {
         result.ifPresent(this::setUserName);
     }
 
+    // Method to ... something.
     public void executeCallback(){
-
         // Confirm username in terminal
-        System.out.println(getUserName());
+        System.out.println("Your username: "+ getUserName());
     }
+
 
     /*
      * Getters and setters:
      */
 
     // Get username
-    public String getUserName() {
+    private String getUserName() {
         return userName;
     }
 
     // Set username
-    public void setUserName(String userName) {
+    private void setUserName(String userName) {
         this.userName = userName;
     }
 }

@@ -15,8 +15,8 @@ import javafx.stage.Stage;
  */
 public class TempGui extends Application {
 
-    public UserNameDialog userDialog;
-    public ConnectionDialog connectionDialog;
+    private UserNameDialog userDialog;
+    private ConnectionDialog connectionDialog;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -46,12 +46,12 @@ public class TempGui extends Application {
         Application.launch(args);
     }
 
-    public void btnClickConnection(){
-        connectionDialog.diplay();
+    private void btnClickConnection(){
+        connectionDialog.display();
     }
 
-    public void btnClickName(){
-        userDialog.diplay();
+    private void btnClickName(){
+        userDialog.display();
     }
 
 }

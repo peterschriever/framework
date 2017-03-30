@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.util.Pair;
 
 /**
  * Class ConnectionDialog
@@ -13,22 +12,24 @@ import javafx.util.Pair;
  * @author Ruben Buisman
  * @version 0.1 (28-03-2017)
  */
-public class ConnectionDialog {
+public class ConnectionDialog implements DialogInterface {
 
     private String ipAddress;
     private String portNumber;
 
-    //TODO: refactor display method to smaller tasks/methods, maybe inheritance?
+    public void display(){
+        // Setup dialog
+        setupDialog();
 
-    public void diplay(){
+        //Callback
+        executeCallback();
+    }
+
+    public void setupDialog(){
         // Create the custom dialog.
-        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Create connection");
         dialog.setHeaderText("Please enter your configuration details:");
-
-        // Set the button types.
-        ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
 
         // Create grid with the ip and port labels and fields.
         GridPane grid = new GridPane();
@@ -43,6 +44,10 @@ public class ConnectionDialog {
         grid.add(ip, 1, 0);
         grid.add(new Label("Port number:"), 0, 1);
         grid.add(port, 1, 1);
+
+        // Set the button types.
+        ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
 
         // Enable/Disable connect button depending on whether a ip was entered.
         Node connectButton = dialog.getDialogPane().lookupButton(connectButtonType);
@@ -66,31 +71,32 @@ public class ConnectionDialog {
         setPortNumber(port.getText());
     }
 
-    private void executeCallback(){
+    public void executeCallback(){
+        // Confirm connection properties in terminal
+        System.out.println("Connection: "+ getIpAddress() + ":" + getPortNumber());    }
 
-    }
 
     /*
      * Getters and setters:
      */
 
     // Set IP address
-    public void setIpAddress(String ipAddress) {
+    private void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
     // Set port number
-    public void setPortNumber(String portNumber) {
+    private void setPortNumber(String portNumber) {
         this.portNumber = portNumber;
     }
 
     // Get IP address
-    public String getIpAddress() {
+    private String getIpAddress() {
         return ipAddress;
     }
 
     // Get port number
-    public String getPortNumber() {
+    private String getPortNumber() {
         return portNumber;
     }
 }
