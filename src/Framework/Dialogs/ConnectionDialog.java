@@ -66,6 +66,10 @@ public class ConnectionDialog {
         setPortNumber(port.getText());
     }
 
+    private void executeCallback(){
+
+    }
+
     /*
      * Getters and setters:
      */

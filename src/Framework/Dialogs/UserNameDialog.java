@@ -10,12 +10,19 @@ import java.util.Optional;
  * @author Ruben Buisman
  * @version 0.1 (28-03-2017)
  */
-public class UserNameDialog {
+public class UserNameDialog implements DialogInterface {
 
     private String userName;
 
-    public void diplay(){
+    public void display(){
+        // Setup dialog
+        setupDialog();
 
+        // Callback
+        executeCallback();
+    }
+
+    public void setupDialog(){
         // Create dialog
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Create username");
@@ -33,6 +40,9 @@ public class UserNameDialog {
 
         // Set username field with lambda
         result.ifPresent(this::setUserName);
+    }
+
+    public void executeCallback(){
 
         // Confirm username in terminal
         System.out.println(getUserName());
