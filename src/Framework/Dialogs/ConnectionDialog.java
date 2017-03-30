@@ -35,7 +35,7 @@ public class ConnectionDialog implements DialogInterface {
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setPadding(new Insets(20, 10, 10, 10));
 
         TextField ip = new TextField();
         TextField port = new TextField();
