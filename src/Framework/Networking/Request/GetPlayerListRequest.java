@@ -1,7 +1,6 @@
 package Framework.Networking.Request;
 
 import Framework.Networking.Connection;
-import Framework.Networking.Response;
 
 import java.io.IOException;
 
@@ -9,7 +8,7 @@ import java.io.IOException;
  * Created by peterzen on 2017-03-28.
  * Part of the framework project.
  */
-public class GetPlayerListRequest implements Request {
+public class GetPlayerListRequest extends Request {
     private Connection conn;
 
     public GetPlayerListRequest(Connection conn) {
@@ -17,7 +16,8 @@ public class GetPlayerListRequest implements Request {
     }
 
     @Override
-    public Response execute() throws IOException, InterruptedException {
-        return conn.sendRequest("get playerlist");
+    public void execute() throws IOException, InterruptedException {
+        requestExecuted(this);
+        conn.sendRequest("get playerlist");
     }
 }

@@ -1,7 +1,6 @@
 package Framework.Networking.Request;
 
 import Framework.Networking.Connection;
-import Framework.Networking.Response;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,7 +10,7 @@ import java.util.List;
  * Created by peterzen on 2017-03-28.
  * Part of the framework project.
  */
-public class SubscribeRequest implements Request {
+public class SubscribeRequest extends Request {
     private final String gameType;
     private final Connection conn;
 
@@ -21,10 +20,11 @@ public class SubscribeRequest implements Request {
     }
 
     @Override
-    public Response execute() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
         List<String> params = new LinkedList<>();
         params.add(gameType);
 
-        return conn.sendRequest("subscribe", params);
+        requestExecuted(this);
+        conn.sendRequest("subscribe", params);
     }
 }

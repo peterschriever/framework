@@ -1,7 +1,6 @@
 package Framework.Networking.Request;
 
 import Framework.Networking.Connection;
-import Framework.Networking.Response;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,7 +10,7 @@ import java.util.List;
  * Created by peterzen on 2017-03-28.
  * Part of the framework project.
  */
-public class HelpRequest implements Request {
+public class HelpRequest extends Request {
     private Connection conn;
     private String forCommand = null;
 
@@ -25,13 +24,15 @@ public class HelpRequest implements Request {
     }
 
     @Override
-    public Response execute() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
         if (forCommand != null) {
             List<String> params = new LinkedList<>();
             params.add(forCommand);
-            return conn.sendRequest("help", params);
+            requestExecuted(this);
+            conn.sendRequest("help", params);
         }
 
-        return conn.sendRequest("help");
+        requestExecuted(this);
+        conn.sendRequest("help");
     }
 }
