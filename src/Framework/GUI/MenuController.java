@@ -1,11 +1,11 @@
 package Framework.GUI;
 
 import Framework.Start;
+import Framework.TempTTTGame.TTTGameStart;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Slider;
 
 /**
  * Created by femkeh on 03/04/17.
@@ -14,11 +14,16 @@ public class MenuController {
     @FXML private MenuItem newTTT;
 
     public void newTTTGame(ActionEvent actionEvent) {
-        System.out.println("Start new TicTacToe game...");
+        System.out.println("TTTGameStart new TicTacToe game...");
+
+        // @TODO: change TTTGame package to use the actual Tic-tac-toe.jar classes
+        TTTGameStart tttGame = new TTTGameStart(Start.getInstance().getStage(), Start.getInstance().getScene());
+        tttGame.start();
+        Start.getInstance().setRunningGame(tttGame);
     }
 
     public void newOthGame(ActionEvent actionEvent) {
-        System.out.println("Start new Othello game...");
+        System.out.println("TTTGameStart new Othello game...");
     }
 
     public void pause(ActionEvent actionEvent) {

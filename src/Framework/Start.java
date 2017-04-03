@@ -1,83 +1,88 @@
 package Framework;
 
+import Framework.GUI.BaseController;
+import Framework.TempTTTGame.TTTGameStart;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * Created by peterzen on 2017-03-27.
  * Part of the framework project.
  */
 public class Start extends Application {
-    private Stage stage;
+    private static final Start frameworkStart = new Start();
+    private Stage stage = null;
+    private Scene scene = null;
+    private String[] args;
+    private TTTGameStart runningGame = null;
 
     public Start() {
     }
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("Hello World from Framework.Start");
+    public static void main(String[] args) throws Exception {
+        System.out.println("Hello World from Framework.TTTGameStart");
 
         System.out.println(Config.get("game", "turnTimeout"));
 
-        Start.launch(args);
+        // start-up framework:
+        frameworkStart.args = args;
 
-    }
-
-    public void initialize() {
-        // BoardController board = new BoardController();
-        // board.drawGrid(3);
+        // we cannot make stage, this is created by the Application.launch(args)
+        frameworkStart.initFrameworkStartScreen(frameworkStart.stage, frameworkStart.scene);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        stage.setTitle("Games");
-        Parent root = FXMLLoader.load(getClass().getResource("/Framework/GUI/View.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+        initFrameworkStartScreen(this.stage, this.scene);
     }
 
-    public void newTTTGame(ActionEvent actionEvent) {
-        System.out.println("Start new TicTacToe game...");
+    private void initFrameworkStartScreen(Stage stage, Scene scene) throws Exception {
+        if (stage == null) {
+            // javafx application not started
+            launch(this.args);
+            return;
+        }
+
+        // we have a javafx application already running @ stage
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Framework/GUI/fxml/View.fxml"));
+        fxmlLoader.setController(new BaseController());
+        Parent root = fxmlLoader.load();
+
+        if (scene == null) {
+            this.scene = new Scene(root);
+        } else {
+            scene.setRoot(root);
+            this.scene = scene;
+        }
+
+        stage.setScene(this.scene);
+
+        if (!stage.isShowing()) {
+            stage.show();
+        }
     }
 
-    public void newOthGame(ActionEvent actionEvent) {
-        System.out.println("Start new Othello game...");
+    public static Start getInstance() {
+        return frameworkStart;
     }
 
-    public void pause(ActionEvent actionEvent) {
-        System.out.println("Game paused");
+    public Stage getStage() {
+        return stage;
     }
 
-    public void endGame(ActionEvent actionEvent) {
-        System.out.println("Game ended");
+    public Scene getScene() {
+        return scene;
     }
 
-    public void showHighScores(ActionEvent actionEvent) {
-        System.out.println("High scores");
+    public void setRunningGame(TTTGameStart runningGame) {
+        this.runningGame = runningGame;
     }
 
-    public void giveHint(ActionEvent actionEvent) {
-        System.out.println("Possible next move");
+    public TTTGameStart getRunningGame() {
+        return runningGame;
     }
-
-    public void undoMove(ActionEvent actionEvent) {
-        System.out.println("Undo move");
-    }
-
-    public void saveGame(ActionEvent actionEvent) {
-        System.out.println("Saving game...");
-    }
-
-    public void quit(ActionEvent actionEvent) {
-        System.out.println("Quit game");
-        Platform.exit();
-    }
-
 }
