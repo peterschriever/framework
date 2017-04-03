@@ -15,10 +15,6 @@ public class ErrorDialog {
      * @param errorContent Sets the message of the error.
      */
     public void display(String errorTitle, String errorContent){
-        setupDialog(errorTitle, errorContent);
-    }
-
-    public void setupDialog(String errorTitle, String errorContent){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(errorTitle);
