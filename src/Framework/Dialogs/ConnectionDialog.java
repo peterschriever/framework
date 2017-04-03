@@ -12,47 +12,32 @@ import javafx.scene.layout.GridPane;
  * @author Ruben Buisman
  * @version 0.1 (28-03-2017)
  */
-public class ConnectionDialog {
+public class ConnectionDialog extends AbstractDialog{
 
     private String ipAddress;
     private String portNumber;
-    private Dialog dialog;
-    private GridPane grid;
     private TextField ip;
     private TextField port;
 
     public void display(){
-        createDialog();
-        createGrid();
+        super.createDialog("Create connection", "Please enter your configuration details:");
+        super.createGrid();
+        addTextFields();
         createButtons();
 
         // If closed, set the fields and execute callback.
-        dialog.showAndWait();
+        super.dialog.showAndWait();
         setFields();
         executeCallback();
     }
 
-    private void createDialog() {
-        dialog = new Dialog();
-        dialog.setTitle("Create connection");
-        dialog.setHeaderText("Please enter your configuration details:");
-    }
-
-    private void createGrid(){
-        grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 10, 10, 10));
-        addTextFields();
-    }
-
-    private void addTextFields() {
+    public void addTextFields() {
         ip = new TextField();
         port = new TextField();
-        grid.add(new Label("IP address:"), 0, 0);
-        grid.add(ip, 1, 0);
-        grid.add(new Label("Port number:"), 0, 1);
-        grid.add(port, 1, 1);
+        super.grid.add(new Label("IP address:"), 0, 0);
+        super.grid.add(ip, 1, 0);
+        super.grid.add(new Label("Port number:"), 0, 1);
+        super.grid.add(port, 1, 1);
         Platform.runLater(ip::requestFocus);
     }
 
@@ -72,8 +57,9 @@ public class ConnectionDialog {
         dialog.getDialogPane().setContent(grid);
     }
 
-    public void executeCallback(){
-        System.out.println("Send to network: "+ getIpAddress() + ":" + getPortNumber());    }
+    private void executeCallback(){
+        System.out.println("Send to network: "+ getIpAddress() + ":" + getPortNumber());
+    }
 
 
     /*
