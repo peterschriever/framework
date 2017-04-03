@@ -1,7 +1,11 @@
 package Framework.Dialogs;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -27,5 +31,20 @@ abstract public class AbstractDialog {
         grid.setPadding(new Insets(20, 10, 10, 10));
     }
 
+    public void createButtons(String buttonText, TextField textField) {
+        ButtonType button = new ButtonType(buttonText, ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(button, ButtonType.CANCEL);
+
+        // Enable/Disable connect button depending on whether a ip was entered.
+        Node connectButton = dialog.getDialogPane().lookupButton(button);
+        connectButton.setDisable(true);
+
+        // Do some validation (using the Java 8 lambda syntax).
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            connectButton.setDisable(newValue.trim().isEmpty());
+        });
+
+        dialog.getDialogPane().setContent(grid);
+    }
 
 }

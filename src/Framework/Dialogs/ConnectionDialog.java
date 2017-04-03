@@ -23,7 +23,7 @@ public class ConnectionDialog extends AbstractDialog{
         super.createDialog("Create connection", "Please enter your configuration details:");
         super.createGrid();
         addTextFields();
-        createButtons();
+        createButtons("Connect", ip);
 
         // If closed, set the fields and execute callback.
         super.dialog.showAndWait();
@@ -39,22 +39,6 @@ public class ConnectionDialog extends AbstractDialog{
         super.grid.add(new Label("Port number:"), 0, 1);
         super.grid.add(port, 1, 1);
         Platform.runLater(ip::requestFocus);
-    }
-
-    private void createButtons() {
-        ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
-
-        // Enable/Disable connect button depending on whether a ip was entered.
-        Node connectButton = dialog.getDialogPane().lookupButton(connectButtonType);
-        connectButton.setDisable(true);
-
-        // Do some validation (using the Java 8 lambda syntax).
-        ip.textProperty().addListener((observable, oldValue, newValue) -> {
-            connectButton.setDisable(newValue.trim().isEmpty());
-        });
-
-        dialog.getDialogPane().setContent(grid);
     }
 
     private void executeCallback(){
