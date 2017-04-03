@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
  * @author Ruben Buisman
  * @version 0.1 (28-03-2017)
  */
-public class UserNameDialog implements DialogInterface {
+public class UserNameDialog {
 
     private String userName;
     private Dialog dialog;

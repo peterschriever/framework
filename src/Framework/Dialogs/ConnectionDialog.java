@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
  * @author Ruben Buisman
  * @version 0.1 (28-03-2017)
  */
-public class ConnectionDialog implements DialogInterface {
+public class ConnectionDialog {
 
     private String ipAddress;
     private String portNumber;
