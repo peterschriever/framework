@@ -2,6 +2,7 @@ package Framework.Dialogs;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
@@ -21,26 +22,20 @@ public class ConnectionDialog implements DialogInterface {
     private TextField port;
 
     public void display(){
-        setupDialog();
-    }
-
-    public void setupDialog(){
-        // Create the custom dialog.
-        dialog = new Dialog();
-        dialog.setTitle("Create connection");
-        dialog.setHeaderText("Please enter your configuration details:");
+        createDialog();
         createGrid();
-
-        // Set the button types.
         createButtons();
-
-        // Automatic focus on the ip field by default.
-        Platform.runLater(ip::requestFocus);
 
         // If closed, set the fields and execute callback.
         dialog.showAndWait();
         setFields();
         executeCallback();
+    }
+
+    private void createDialog() {
+        dialog = new Dialog();
+        dialog.setTitle("Create connection");
+        dialog.setHeaderText("Please enter your configuration details:");
     }
 
     private void createGrid(){
@@ -58,11 +53,22 @@ public class ConnectionDialog implements DialogInterface {
         grid.add(ip, 1, 0);
         grid.add(new Label("Port number:"), 0, 1);
         grid.add(port, 1, 1);
+        Platform.runLater(ip::requestFocus);
     }
 
     private void createButtons() {
         ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
+
+        // Enable/Disable connect button depending on whether a ip was entered.
+        Node connectButton = dialog.getDialogPane().lookupButton(connectButtonType);
+        connectButton.setDisable(true);
+
+        // Do some validation (using the Java 8 lambda syntax).
+        ip.textProperty().addListener((observable, oldValue, newValue) -> {
+            connectButton.setDisable(newValue.trim().isEmpty());
+        });
+
         dialog.getDialogPane().setContent(grid);
     }
 

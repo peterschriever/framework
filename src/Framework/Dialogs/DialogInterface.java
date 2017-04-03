@@ -8,9 +8,9 @@ package Framework.Dialogs;
  */
 public interface DialogInterface {
 
-    void display();
+    //TODO: Add functions that are used in connectionDialog/usernamedialog
 
-    void setupDialog();
+    void display();
 
     void executeCallback();
 }

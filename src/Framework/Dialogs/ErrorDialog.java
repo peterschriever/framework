@@ -10,11 +10,12 @@ import javafx.scene.control.Alert;
  */
 public class ErrorDialog {
 
+    /**
+     * @param errorTitle Sets the title for the error dialog.
+     * @param errorContent Sets the message of the error.
+     */
     public void display(String errorTitle, String errorContent){
-
         setupDialog(errorTitle, errorContent);
-
-        executeCallback();
     }
 
     public void setupDialog(String errorTitle, String errorContent){
@@ -23,9 +24,10 @@ public class ErrorDialog {
         alert.setHeaderText(errorTitle);
         alert.setContentText(errorContent);
         alert.showAndWait();
+        executeCallback();
     }
 
     public void executeCallback(){
-        System.out.println("Error: Something went wrong!");
+        System.out.println("Send something..");
     }
 }
