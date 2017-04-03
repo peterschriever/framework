@@ -18,6 +18,7 @@ public class TempGui extends Application {
     private UserNameDialog userDialog;
     private ConnectionDialog connectionDialog;
     private ErrorDialog errorDialog;
+    private MessageDialog messageDialog;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -26,6 +27,7 @@ public class TempGui extends Application {
         userDialog = new UserNameDialog();
         connectionDialog = new ConnectionDialog();
         errorDialog = new ErrorDialog();
+        messageDialog = new MessageDialog();
 
         primaryStage.setTitle("Temp gui for testing");
 
@@ -33,14 +35,17 @@ public class TempGui extends Application {
         Button btn = new Button("Username dialog");
         Button btn1 = new Button("Connection dialog");
         Button btn2 = new Button("Error dialog");
+        Button btn3 = new Button("Message dialog");
         btn.setOnAction(e -> btnClickName());
         btn1.setOnAction(e -> btnClickConnection());
         btn2.setOnAction(e -> btnClickError());
+        btn3.setOnAction(e -> btnClickMessage());
 
         BorderPane sp = new BorderPane();
-        sp.setLeft(btn);
-        sp.setBottom(btn2);
+        sp.setTop(btn);
         sp.setRight(btn1);
+        sp.setCenter(btn2);
+        sp.setBottom(btn3);
 
         Scene scene = new Scene(sp, 400, 200);
         primaryStage.setScene(scene);
@@ -63,5 +68,8 @@ public class TempGui extends Application {
         errorDialog.display("Wooops!", "Invalid username (test content)");
     }
 
+    private void btnClickMessage() {
+        messageDialog.display("Message dialog", "Standard message dialog", "I have a great message for you!");
+    }
 
 }

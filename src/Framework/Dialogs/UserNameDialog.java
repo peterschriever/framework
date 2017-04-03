@@ -1,14 +1,13 @@
 package Framework.Dialogs;
 
 import javafx.application.Platform;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 
 /**
  * Class UserNameDialog
  *
  * @author Ruben Buisman
- * @version 0.1 (28-03-2017)
+ * @version 0.2 (28-03-2017)
  */
 public class UserNameDialog extends AbstractDialog{
 

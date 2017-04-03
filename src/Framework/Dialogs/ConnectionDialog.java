@@ -1,10 +1,7 @@
 package Framework.Dialogs;
 
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 
 /**
  * Class ConnectionDialog

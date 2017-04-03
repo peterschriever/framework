@@ -7,9 +7,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.StageStyle;
 
 /**
- * Created by Ruben on 03-Apr-17.
+ * Class AbstractDialog
+ *
+ * @author Ruben Buisman
+ * @version 0.1 (03-04-2017)
  */
 abstract public class AbstractDialog {
 
@@ -22,6 +26,7 @@ abstract public class AbstractDialog {
         dialog = new Dialog();
         dialog.setTitle(dialogTitle);
         dialog.setHeaderText(dialogHeader);
+        dialog.initStyle(StageStyle.UTILITY);
     }
 
     public void createGrid(){

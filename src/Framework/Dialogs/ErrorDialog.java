@@ -6,7 +6,7 @@ import javafx.scene.control.Alert;
  * Class ErrorDialog
  *
  * @author Ruben Buisman
- * @version 0.1 (30-03-2017)
+ * @version 0.2 (30-03-2017)
  */
 public class ErrorDialog {
 
