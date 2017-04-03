@@ -1,47 +1,17 @@
-package Framework;
+package Framework.GUI;
 
-import javafx.application.Application;
+import Framework.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
 
 /**
- * Created by peterzen on 2017-03-27.
- * Part of the framework project.
+ * Created by femkeh on 03/04/17.
  */
-public class Start extends Application {
-    private Stage stage;
-
-    public Start() {
-    }
-
-    public static void main(String[] args) throws IOException {
-        System.out.println("Hello World from Framework.Start");
-
-        System.out.println(Config.get("game", "turnTimeout"));
-
-        Start.launch(args);
-
-    }
-
-    public void initialize() {
-        // BoardController board = new BoardController();
-        // board.drawGrid(3);
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        stage.setTitle("Games");
-        Parent root = FXMLLoader.load(getClass().getResource("/Framework/GUI/View.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+public class MenuController {
+    @FXML private MenuItem newTTT;
 
     public void newTTTGame(ActionEvent actionEvent) {
         System.out.println("Start new TicTacToe game...");
