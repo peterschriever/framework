@@ -20,10 +20,5 @@ public class ErrorDialog {
         alert.setHeaderText(errorTitle);
         alert.setContentText(errorContent);
         alert.showAndWait();
-        executeCallback();
-    }
-
-    public void executeCallback(){
-        System.out.println("Send something..");
     }
 }

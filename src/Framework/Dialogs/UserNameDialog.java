@@ -17,24 +17,23 @@ public class UserNameDialog extends AbstractDialog{
     public void display(){
         super.createDialog("Create username", "Please enter your username:");
         super.createGrid();
-        addTextFields();
-        createButtons("Create", playerName);
+        this.addTextFields();
+        this.createButtons("Create", playerName);
 
         // If closed, set the fields and execute callback.
         super.dialog.showAndWait();
-        setUserName(playerName.getText());
-        executeCallback();
+        this.setUserName(playerName.getText());
+        this.executeCallback();
     }
 
     public void addTextFields() {
-        playerName = new TextField();
+        this.playerName = new TextField();
         super.grid.add(playerName, 0, 0);
         Platform.runLater(playerName::requestFocus);
     }
 
     private void executeCallback(){
-        // Confirm username in terminal
-        System.out.println("Send to network: "+ getUserName());
+        System.out.println("Callback: "+ getUserName());
     }
 
 

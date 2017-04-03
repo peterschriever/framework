@@ -19,18 +19,18 @@ public class ConnectionDialog extends AbstractDialog{
     public void display(){
         super.createDialog("Create connection", "Please enter your configuration details:");
         super.createGrid();
-        addTextFields();
-        createButtons("Connect", ip);
+        this.addTextFields();
+        this.createButtons("Connect", ip);
 
         // If closed, set the fields and execute callback.
         super.dialog.showAndWait();
-        setFields();
-        executeCallback();
+        this.setFields();
+        this.executeCallback();
     }
 
     public void addTextFields() {
-        ip = new TextField();
-        port = new TextField();
+        this.ip = new TextField();
+        this.port = new TextField();
         super.grid.add(new Label("IP address:"), 0, 0);
         super.grid.add(ip, 1, 0);
         super.grid.add(new Label("Port number:"), 0, 1);
@@ -39,9 +39,8 @@ public class ConnectionDialog extends AbstractDialog{
     }
 
     private void executeCallback(){
-        System.out.println("Send to network: "+ getIpAddress() + ":" + getPortNumber());
+        System.out.println("Callback: "+ getIpAddress() + ":" + getPortNumber());
     }
-
 
     /*
      * Getters and setters
