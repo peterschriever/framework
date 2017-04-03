@@ -2,7 +2,6 @@ package Framework.Dialogs;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
@@ -16,86 +15,81 @@ public class ConnectionDialog implements DialogInterface {
 
     private String ipAddress;
     private String portNumber;
+    private Dialog dialog;
+    private GridPane grid;
+    private TextField ip;
+    private TextField port;
 
     public void display(){
-        // Setup dialog
         setupDialog();
-
-        //Callback
-        executeCallback();
     }
 
     public void setupDialog(){
         // Create the custom dialog.
-        Dialog<String> dialog = new Dialog<>();
+        dialog = new Dialog();
         dialog.setTitle("Create connection");
         dialog.setHeaderText("Please enter your configuration details:");
-
-        // Create grid with the ip and port labels and fields.
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 10, 10, 10));
-
-        TextField ip = new TextField();
-        TextField port = new TextField();
-
-        grid.add(new Label("IP address:"), 0, 0);
-        grid.add(ip, 1, 0);
-        grid.add(new Label("Port number:"), 0, 1);
-        grid.add(port, 1, 1);
+        createGrid();
 
         // Set the button types.
-        ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
-
-        // Enable/Disable connect button depending on whether a ip was entered.
-        Node connectButton = dialog.getDialogPane().lookupButton(connectButtonType);
-        connectButton.setDisable(true);
-
-        // Do some validation (using the Java 8 lambda syntax).
-        ip.textProperty().addListener((observable, oldValue, newValue) -> {
-            connectButton.setDisable(newValue.trim().isEmpty());
-        });
-
-        dialog.getDialogPane().setContent(grid);
+        createButtons();
 
         // Automatic focus on the ip field by default.
         Platform.runLater(ip::requestFocus);
 
-        // Start dialog
+        // If closed, set the fields and execute callback.
         dialog.showAndWait();
+        setFields();
+        executeCallback();
+    }
 
-        // Set ip and port in fields
+    private void createGrid(){
+        grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 10, 10, 10));
+        addTextFields();
+    }
+
+    private void addTextFields() {
+        ip = new TextField();
+        port = new TextField();
+        grid.add(new Label("IP address:"), 0, 0);
+        grid.add(ip, 1, 0);
+        grid.add(new Label("Port number:"), 0, 1);
+        grid.add(port, 1, 1);
+    }
+
+    private void createButtons() {
+        ButtonType connectButtonType = new ButtonType("Connect", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
+        dialog.getDialogPane().setContent(grid);
+    }
+
+    public void executeCallback(){
+        System.out.println("Send to network: "+ getIpAddress() + ":" + getPortNumber());    }
+
+
+    /*
+     * Getters and setters
+     */
+    private void setFields() {
         setIpAddress(ip.getText());
         setPortNumber(port.getText());
     }
 
-    public void executeCallback(){
-        // Confirm connection properties in terminal
-        System.out.println("Connection: "+ getIpAddress() + ":" + getPortNumber());    }
-
-
-    /*
-     * Getters and setters:
-     */
-
-    // Set IP address
     private void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
-    // Set port number
     private void setPortNumber(String portNumber) {
         this.portNumber = portNumber;
     }
 
-    // Get IP address
     private String getIpAddress() {
         return ipAddress;
     }
 
-    // Get port number
     private String getPortNumber() {
         return portNumber;
     }
