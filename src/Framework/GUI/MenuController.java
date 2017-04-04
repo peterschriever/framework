@@ -1,33 +1,37 @@
 package Framework.GUI;
 
-import Framework.Dialogs.AbstractDialog;
 import Framework.Dialogs.ConnectionDialog;
 import Framework.Dialogs.DialogInterface;
-import Framework.Dialogs.MessageDialog;
 import Framework.Start;
-import Framework.TempTTTGame.TTTGameStart;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+
 /**
  * Created by femkeh on 03/04/17.
  */
 public class MenuController {
-    @FXML private MenuItem newTTT;
+    @FXML
+    private MenuItem newTTT;
 
     public void newTTTGame(ActionEvent actionEvent) {
-        System.out.println("TTTGameStart new TicTacToe game...");
-
-        // @TODO: change TTTGame package to use the actual Tic-tac-toe.jar classes
-        TTTGameStart tttGame = new TTTGameStart(Start.getInstance().getStage(), Start.getInstance().getScene());
-        tttGame.start();
-        Start.getInstance().setRunningGame(tttGame);
+        try {
+            Start.getInstance().loadGameModule("jar:file:games/tictactoe.jar!/");
+        } catch (MalformedURLException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException e) {
+            e.printStackTrace(); // @TODO: maybe show a dialog
+        }
     }
 
     public void newOthGame(ActionEvent actionEvent) {
-        System.out.println("TTTGameStart new Othello game...");
+        try {
+            Start.getInstance().loadGameModule("jar:file:games/othello.jar!/");
+        } catch (MalformedURLException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException e) {
+            e.printStackTrace(); // @TODO: maybe show a dialog
+        }
     }
 
     public void pause(ActionEvent actionEvent) {

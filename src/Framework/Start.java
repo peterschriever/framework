@@ -13,6 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * Created by peterzen on 2017-03-27.
  * Part of the framework project.
@@ -29,8 +33,8 @@ public class Start extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        initFrameworkStartScreen(this.stage, this.scene);
+        frameworkStart.stage = stage;
+        frameworkStart.initFrameworkStartScreen(stage, null);
     }
 
     public static void main(String[] args) throws Exception {
@@ -88,8 +92,8 @@ public class Start extends Application {
         frameworkStart.initFrameworkStartScreen(frameworkStart.stage, frameworkStart.scene);
     }
 
-    private void initFrameworkStartScreen(Stage stage, Scene scene) throws Exception {
-        if (stage == null) {
+    private void initFrameworkStartScreen(Stage inStage, Scene inScene) throws Exception {
+        if (inStage == null) {
             // javafx application not started
             launch(this.args);
             return;
@@ -100,17 +104,17 @@ public class Start extends Application {
         fxmlLoader.setController(new BaseController());
         Parent root = fxmlLoader.load();
 
-        if (scene == null) {
+        if (inScene == null) {
             this.scene = new Scene(root);
         } else {
-            scene.setRoot(root);
-            this.scene = scene;
+            inScene.setRoot(root);
+            this.scene = inScene;
         }
 
-        stage.setScene(this.scene);
+        inStage.setScene(this.scene);
 
-        if (!stage.isShowing()) {
-            stage.show();
+        if (!inStage.isShowing()) {
+            inStage.show();
         }
     }
 
@@ -132,5 +136,11 @@ public class Start extends Application {
 
     public TTTGameStart getRunningGame() {
         return runningGame;
+    }
+
+    public void loadGameModule(String path) throws MalformedURLException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+        URL url = new URL(path);
+        JarClassLoader loader = new JarClassLoader(url);
+        loader.invokeClass("Start", new String[]{"0"}, getStage(), getScene());
     }
 }
