@@ -1,5 +1,9 @@
 package Framework.GUI;
 
+import Framework.Dialogs.AbstractDialog;
+import Framework.Dialogs.ConnectionDialog;
+import Framework.Dialogs.DialogInterface;
+import Framework.Dialogs.MessageDialog;
 import Framework.Start;
 import Framework.TempTTTGame.TTTGameStart;
 import javafx.application.Platform;
@@ -39,7 +43,8 @@ public class MenuController {
     }
 
     public void giveHint(ActionEvent actionEvent) {
-        System.out.println("Possible next move");
+        DialogInterface testDialog = new ConnectionDialog();
+        testDialog.display();
     }
 
     public void undoMove(ActionEvent actionEvent) {
