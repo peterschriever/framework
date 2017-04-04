@@ -15,7 +15,6 @@ public class ErrorResponse implements Response {
 
     @Override
     public void executeCallback() {
-        // @TODO: show some form of error (Dialog?)
         System.out.println("[networking] ErrorResponse callback not implemented yet");
     }
 

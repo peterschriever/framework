@@ -33,6 +33,7 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
     }
 
     private void executeCallback() {
+        // @TODO: implement callback
         System.out.println("Callback: " + getUserName());
     }
 

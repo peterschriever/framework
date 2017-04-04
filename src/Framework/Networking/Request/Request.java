@@ -22,7 +22,7 @@ public abstract class Request {
             maxStackSize = Integer.parseInt(Config.get("network", "requestMaxStackSize"));
             preferredStackSize = Integer.parseInt(Config.get("network", "requestPreferredStackSize"));
         } catch (IOException e) {
-            e.printStackTrace(); // @TODO: is there a better way to handle this exception?
+            e.printStackTrace();
         }
     }
 

@@ -31,8 +31,6 @@ public class InputStreamReader extends Observable implements Runnable {
         while (true) {
             try {
                 readLineFromInput();
-            } catch (TimeoutException e) {
-                handleReadTimeout();
             } catch (IOException e) {
                 handleConnectionDrop(e);
                 break;
@@ -47,22 +45,8 @@ public class InputStreamReader extends Observable implements Runnable {
             try {
                 bufferedReader.readLine();
             } catch (IOException e) {
-                e.printStackTrace(); //@TODO: is there a better way to handle this exception?
+                e.printStackTrace();
             }
-        }
-    }
-
-    private void handleReadTimeout() {
-        if (!responseString.equals("")) {
-            System.out.println("notify called: " + responseString);
-            notifyObservers(responseString);
-            responseString = "";
-        }
-
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace(); // @TODO: is there a better way to handle this exception?
         }
     }
 

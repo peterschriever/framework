@@ -15,7 +15,6 @@ public class GameListResponse implements Response {
 
     @Override
     public void executeCallback() {
-        // @TODO: implement callback
         System.out.print("[networking] GameListResponse callback not implemented yet\n\tGames found: ");
         gameList.forEach(g -> System.out.print(g + " "));
         System.out.println();

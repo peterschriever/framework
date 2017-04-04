@@ -21,11 +21,11 @@ public class MessageDialog implements DialogInterface {
     }
 
     /**
-     * @param messageTitle Sets the title for the message dialog.
-     * @param messageHeader Sets the header of the dialog.
+     * @param messageTitle   Sets the title for the message dialog.
+     * @param messageHeader  Sets the header of the dialog.
      * @param messageContent Sets the content of the dialog.
      */
-    public void display(){
+    public void display() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(messageTitle);
         alert.setHeaderText(messageHeader);

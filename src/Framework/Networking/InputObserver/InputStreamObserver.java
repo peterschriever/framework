@@ -9,7 +9,6 @@ import java.util.*;
  * Created by peterzen on 2017-03-29.
  * Part of the framework project.
  */
-// @TODO: compile patterns only a single time (ResponsePatterns cls + proxy-pattern?)
 public class InputStreamObserver implements Observer {
 
     @Override
