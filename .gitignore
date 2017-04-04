@@ -18,4 +18,4 @@ hs_err_pid*
 out/
 
 *.properties
-!*.example.properties
+!*.properties.example

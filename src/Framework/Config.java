@@ -25,9 +25,9 @@ public final class Config {
         props.put(configFile, newProps);
     }
 
-    public static Object get(String configFile, String key) throws IOException {
+    public static String get(String configFile, String key) throws IOException {
         if (props.containsKey(configFile)) {
-            return props.get(configFile).get(key);
+            return (String) props.get(configFile).get(key);
         }
         readProperties(configFile);
         return get(configFile, key);
