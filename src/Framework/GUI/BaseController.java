@@ -22,7 +22,7 @@ public class BaseController {
         }
     }
 
-    private void loadPartialViews() throws IOException {
+    protected void loadPartialViews() throws IOException {
         container.getChildren().add(FXMLLoader.load(getClass().getResource("/Framework/GUI/fxml/MenuView.fxml")));
         container.getChildren().add(FXMLLoader.load(getClass().getResource("/Framework/GUI/fxml/BoardView.fxml")));
     }
