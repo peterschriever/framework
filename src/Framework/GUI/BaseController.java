@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class BaseController {
     @FXML
-    private VBox container;
+    protected VBox container;
 
     public void initialize() {
         try {
