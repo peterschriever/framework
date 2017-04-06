@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by peterzen on 2017-04-03.
  * Part of the framework project.
  */
-public class BaseController {
+public class Base {
     @FXML
     protected VBox container;
 

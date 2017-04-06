@@ -1,6 +1,6 @@
 package Framework;
 
-import Framework.GUI.BaseController;
+import Framework.GUI.Base;
 import Framework.Networking.Connection;
 import Framework.Networking.Request.GetGameListRequest;
 import Framework.Networking.Request.GetPlayerListRequest;
@@ -101,7 +101,7 @@ public class Start extends Application {
 
         // we have a javafx application already running @ stage
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Framework/GUI/fxml/View.fxml"));
-        fxmlLoader.setController(new BaseController());
+        fxmlLoader.setController(new Base());
         Parent root = fxmlLoader.load();
 
         if (inScene == null) {
