@@ -89,6 +89,11 @@ public class Start extends Application {
             public void playerListReceived(Response response) {
                 System.out.println("playerListReceived event called!");
             }
+
+            @Override
+            public void errorReceived(Response response) {
+                System.out.println("errorReceived event called!");
+            }
         });
 
         // setup Response observer
