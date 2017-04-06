@@ -31,8 +31,9 @@ public class Start extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-//        String host = Config.get("network", "host");
-//        int port = Integer.parseInt(Config.get("network", "port"));
+        String host = Config.get("network", "host");
+        int port = Integer.parseInt(Config.get("network", "port"));
+        System.out.println(host);
 
         // setup receiver
 //        Connection conn = new Connection(host, port, new NetworkEvents() {
