@@ -21,8 +21,9 @@ public class Connection {
     private InputStreamReader inputReader;
     private DataOutputStream outputStream;
     private Thread inputReaderThread;
+    private static NetworkEvents eventHandler;
 
-    public Connection(String host, int port) throws IOException {
+    public Connection(String host, int port, NetworkEvents eventHandler) throws IOException {
         this.host = host;
         this.port = port;
         System.out.println("[networking] Connected with: " + this.host + ":" + this.port);
@@ -30,6 +31,11 @@ public class Connection {
         serverSocket = new Socket(this.host, this.port);
         inputReader = new InputStreamReader(serverSocket.getInputStream());
         outputStream = new DataOutputStream(serverSocket.getOutputStream());
+        Connection.eventHandler = eventHandler;
+    }
+
+    public static NetworkEvents getEventHandler() {
+        return eventHandler;
     }
 
     public void sendRequest(String request) throws IOException, InterruptedException {

@@ -1,5 +1,7 @@
 package Framework.Networking.Response;
 
+import Framework.Networking.Connection;
+
 /**
  * Created by peterzen on 2017-04-01.
  * Part of the framework project.
@@ -13,7 +15,6 @@ public class OurTurnResponse implements Response {
 
     @Override
     public void executeCallback() {
-        System.out.println("[networking] OurTurnResponse callback not implemented yet");
-        System.out.println("\t turnMessage: " + turnMessage);
+        Connection.getEventHandler().ourTurn(this);
     }
 }
