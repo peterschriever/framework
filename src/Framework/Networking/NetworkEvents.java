@@ -1,12 +1,13 @@
 package Framework.Networking;
 
+import Framework.Networking.Response.ErrorResponse;
 import Framework.Networking.Response.Response;
 
 /**
  * Created by peterzen on 2017-04-06.
  * Part of the framework project.
  */
-public interface NetworkEventsController {
+public interface NetworkEvents {
 
     void challengeCancelled(Response response);
 
@@ -26,4 +27,5 @@ public interface NetworkEventsController {
 
     void playerListReceived(Response response);
 
+    void errorReceived(Response response);
 }

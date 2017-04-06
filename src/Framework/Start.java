@@ -2,10 +2,12 @@ package Framework;
 
 import Framework.GUI.BaseController;
 import Framework.Networking.Connection;
+import Framework.Networking.NetworkEvents;
 import Framework.Networking.Request.GetGameListRequest;
 import Framework.Networking.Request.GetPlayerListRequest;
 import Framework.Networking.Request.LoginRequest;
 import Framework.Networking.Request.Request;
+import Framework.Networking.Response.Response;
 import Framework.TempTTTGame.TTTGameStart;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,52 @@ public class Start extends Application {
         int port = Integer.parseInt(Config.get("network", "port"));
 
         // setup receiver
-        Connection conn = new Connection(host, port);
+        Connection conn = new Connection(host, port, new NetworkEvents() {
+            @Override
+            public void challengeCancelled(Response response) {
+                System.out.println("challengeCancelled event called!");
+            }
+
+            @Override
+            public void challengeReceived(Response response) {
+                System.out.println("challengeReceived event called!");
+            }
+
+            @Override
+            public void ErrorReceived(Response response) {
+                System.out.println("ErrorReceived event called!");
+            }
+
+            @Override
+            public void gameEnded(Response response) {
+                System.out.println("gameEnded event called!");
+            }
+
+            @Override
+            public void gameListReceived(Response response) {
+                System.out.println("gameListReceived event called!");
+            }
+
+            @Override
+            public void matchReceived(Response response) {
+                System.out.println("matchReceived event called!");
+            }
+
+            @Override
+            public void moveReceived(Response response) {
+                System.out.println("moveReceived event called!");
+            }
+
+            @Override
+            public void ourTurn(Response response) {
+                System.out.println("ourTurn event called!");
+            }
+
+            @Override
+            public void playerListReceived(Response response) {
+                System.out.println("playerListReceived event called!");
+            }
+        });
 
         // setup Response observer
         conn.setupInputObserver();

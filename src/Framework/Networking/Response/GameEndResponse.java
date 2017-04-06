@@ -1,5 +1,7 @@
 package Framework.Networking.Response;
 
+import Framework.Networking.Connection;
+
 /**
  * Created by peterzen on 2017-04-01.
  * Part of the framework project.
@@ -19,8 +21,6 @@ public class GameEndResponse implements Response {
 
     @Override
     public void executeCallback() {
-        System.out.println("[networking] GameEndResponse callback not implemented yet");
-        System.out.println("\tplayerOneScore: " + playerOneScore + ", playerTwoScore: " + playerTwoScore
-                + ", comment: " + comment + ", result: " + result);
+        Connection.getEventHandler().gameEnded(this);
     }
 }
