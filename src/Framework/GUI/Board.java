@@ -8,7 +8,7 @@ import javafx.scene.layout.RowConstraints;
 /**
  * Created by femkeh on 03/04/17.
  */
-public class BoardController {
+public class Board {
     @FXML protected GridPane gridPane;
 
     public void drawGrid(int boardSize) {
