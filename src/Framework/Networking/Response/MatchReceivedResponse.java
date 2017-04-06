@@ -1,5 +1,7 @@
 package Framework.Networking.Response;
 
+import Framework.Networking.Connection;
+
 /**
  * Created by peterzen on 2017-04-01.
  * Part of the framework project.
@@ -17,8 +19,6 @@ public class MatchReceivedResponse implements Response {
 
     @Override
     public void executeCallback() {
-        System.out.println("[networking] MatchReceivedResponse callback not implemented yet");
-        System.out.println("\t gameType:" + gameType + ", startingPlayer: " + startingPlayer
-                + ", opponentPlayer: " + opponentPlayer);
+        Connection.getEventHandler().matchReceived(this);
     }
 }

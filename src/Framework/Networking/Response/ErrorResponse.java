@@ -1,5 +1,6 @@
 package Framework.Networking.Response;
 
+import Framework.Networking.Connection;
 import Framework.Networking.Request.Request;
 
 /**
@@ -13,12 +14,12 @@ public class ErrorResponse implements Response {
         this.request = probableCause;
     }
 
-    @Override
-    public void executeCallback() {
-        System.out.println("[networking] ErrorResponse callback not implemented yet");
-    }
-
     public Request getRequest() {
         return request;
+    }
+
+    @Override
+    public void executeCallback() {
+        Connection.getEventHandler().errorReceived(this);
     }
 }

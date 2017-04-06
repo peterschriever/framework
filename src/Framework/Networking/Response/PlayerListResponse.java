@@ -1,5 +1,7 @@
 package Framework.Networking.Response;
 
+import Framework.Networking.Connection;
+
 import java.util.List;
 
 /**
@@ -15,8 +17,6 @@ public class PlayerListResponse implements Response {
 
     @Override
     public void executeCallback() {
-        System.out.print("[networking] PlayerListResponse callback not implemented yet\n\tPlayers found: ");
-        playerList.forEach(p -> System.out.print(p + " "));
-        System.out.println();
+        Connection.getEventHandler().playerListReceived(this);
     }
 }

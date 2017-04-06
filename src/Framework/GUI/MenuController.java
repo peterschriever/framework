@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 
@@ -21,7 +22,7 @@ public class MenuController {
     public void newTTTGame(ActionEvent actionEvent) {
         try {
             Start.getInstance().loadGameModule("jar:file:games/tictactoe.jar!/");
-        } catch (MalformedURLException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException e) {
+        } catch (NoSuchMethodException | InvocationTargetException | ClassNotFoundException | IOException e) {
             e.printStackTrace(); // @TODO: maybe show a dialog
         }
     }
@@ -29,7 +30,7 @@ public class MenuController {
     public void newOthGame(ActionEvent actionEvent) {
         try {
             Start.getInstance().loadGameModule("jar:file:games/othello.jar!/");
-        } catch (MalformedURLException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException e) {
+        } catch (NoSuchMethodException | InvocationTargetException | ClassNotFoundException | IOException e) {
             e.printStackTrace(); // @TODO: maybe show a dialog
         }
     }
