@@ -17,10 +17,6 @@ public class ErrorDialog implements DialogInterface {
         this.errorTitle = errorTitle;
     }
 
-    /**
-     * @param errorTitle   Sets the title for the error dialog.
-     * @param errorContent Sets the message of the error.
-     */
     public void display() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
