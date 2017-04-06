@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 /**
  * Created by femkeh on 03/04/17.
  */
-public class MenuController {
+public class Menu {
     @FXML
     private MenuItem newTTT;
 
