@@ -1,5 +1,6 @@
 package Framework;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -16,12 +17,12 @@ public final class Config {
     }
 
     private static void readProperties(String configFile) throws IOException {
-        String filePath = "configs/"+configFile+".properties";
-        InputStream inputStream;
-        Properties newProps = new Properties();
+        FileInputStream file;
+        String filePath = "configs/" +configFile+".properties";
+        file = new FileInputStream(filePath);
 
-        inputStream = Config.class.getClassLoader().getResourceAsStream(filePath);
-        newProps.load(inputStream);
+        Properties newProps = new Properties();
+        newProps.load(file);
         props.put(configFile, newProps);
     }
 
