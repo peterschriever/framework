@@ -20,6 +20,8 @@ abstract public class AbstractDialog {
     public Dialog dialog;
     public GridPane grid;
 
+    public void display(){};
+
     public void createDialog(String dialogTitle, String dialogHeader){
         dialog = new Dialog();
         dialog.setTitle(dialogTitle);
