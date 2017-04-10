@@ -1,7 +1,6 @@
 package Framework.Networking;
 
-import Framework.Networking.Response.ErrorResponse;
-import Framework.Networking.Response.Response;
+import Framework.Networking.Response.*;
 
 /**
  * Created by peterzen on 2017-04-06.
@@ -9,23 +8,21 @@ import Framework.Networking.Response.Response;
  */
 public interface NetworkEvents {
 
-    void challengeCancelled(Response response);
+    void challengeCancelled(ChallengeCancelledResponse response);
 
-    void challengeReceived(Response response);
+    void challengeReceived(ChallengeReceivedResponse response);
 
-    void ErrorReceived(Response response);
+    void gameEnded(GameEndResponse response);
 
-    void gameEnded(Response response);
+    void gameListReceived(GameListResponse response);
 
-    void gameListReceived(Response response);
+    void matchReceived(MatchReceivedResponse response);
 
-    void matchReceived(Response response);
+    void moveReceived(MoveResponse response);
 
-    void moveReceived(Response response);
+    void ourTurn(OurTurnResponse response);
 
-    void ourTurn(Response response);
+    void playerListReceived(PlayerListResponse response);
 
-    void playerListReceived(Response response);
-
-    void errorReceived(Response response);
+    void errorReceived(ErrorResponse response);
 }
