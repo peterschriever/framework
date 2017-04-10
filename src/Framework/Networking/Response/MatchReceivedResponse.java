@@ -21,4 +21,16 @@ public class MatchReceivedResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().matchReceived(this);
     }
+
+    public String getGameType() {
+        return this.startingPlayer;
+    }
+
+    public String getStartingPlayer() {
+        return this.startingPlayer;
+    }
+
+    public String getOpponentPlayer() {
+        return this.opponentPlayer;
+    }
 }

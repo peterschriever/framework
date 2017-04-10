@@ -21,4 +21,16 @@ public class ChallengeReceivedResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().challengeReceived(this);
     }
+
+    public String getChallenger() {
+        return this.challenger;
+    }
+
+    public String getGameType() {
+        return this.gameType;
+    }
+
+    public int getChallengeNumber() {
+        return this.challengeNumber;
+    }
 }

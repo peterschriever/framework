@@ -23,4 +23,20 @@ public class GameEndResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().gameEnded(this);
     }
+
+    public int getPlayerOneScore() {
+        return this.playerOneScore;
+    }
+
+    public int getPlayerTwoScore() {
+        return this.playerTwoScore;
+    }
+
+    public String getComment() {
+        return this.comment;
+    }
+
+    public String getResult() {
+        return this.result;
+    }
 }

@@ -17,4 +17,8 @@ public class ChallengeCancelledResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().challengeCancelled(this);
     }
+
+    public int challegeNumber() {
+        return this.challengeNumber;
+    }
 }

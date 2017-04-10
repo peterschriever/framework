@@ -17,4 +17,8 @@ public class OurTurnResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().ourTurn(this);
     }
+
+    public String getTurnMessage() {
+        return this.turnMessage;
+    }
 }

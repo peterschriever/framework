@@ -19,4 +19,8 @@ public class GameListResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().gameListReceived(this);
     }
+
+    public List<String> getGameList() {
+        return this.gameList;
+    }
 }

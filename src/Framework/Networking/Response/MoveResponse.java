@@ -21,4 +21,16 @@ public class MoveResponse implements Response {
     public void executeCallback() {
         Connection.getEventHandler().moveReceived(this);
     }
+
+    public String getMovingPlayer() {
+        return this.movingPlayer;
+    }
+
+    public String getMoveDetails() {
+        return this.moveDetails;
+    }
+
+    public int getMovePosition() {
+        return this.movePosition;
+    }
 }
