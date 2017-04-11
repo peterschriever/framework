@@ -17,10 +17,15 @@ import javafx.stage.StageStyle;
  */
 abstract public class AbstractDialog {
 
+    protected DialogEvents eventHandler;
     public Dialog dialog;
     public GridPane grid;
 
-    public void display(){};
+    public abstract void display();
+
+    public AbstractDialog(DialogEvents eventHandler) {
+        this.eventHandler = eventHandler;
+    }
 
     public void createDialog(String dialogTitle, String dialogHeader){
         dialog = new Dialog();

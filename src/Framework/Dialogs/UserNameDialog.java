@@ -14,6 +14,10 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
     private String userName;
     private TextField playerName;
 
+    public UserNameDialog(DialogEvents eventHandler) {
+        super(eventHandler);
+    }
+
     public void display() {
         super.createDialog("Create username", "Please enter your username:");
         super.createGrid();
@@ -34,6 +38,7 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
 
     private void executeCallback() {
         // @TODO: implement callback
+        eventHandler.attemptLogin(getUserName());
         System.out.println("Callback: " + getUserName());
     }
 

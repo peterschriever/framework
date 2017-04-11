@@ -23,11 +23,5 @@ public class ErrorDialog implements DialogInterface {
         alert.setHeaderText(errorTitle);
         alert.setContentText(errorContent);
         alert.showAndWait();
-        this.executeCallback();
-    }
-
-    private void executeCallback() {
-        // @TODO: implement callback
-        System.out.println("todo: implement errDialogCallback");
     }
 }
