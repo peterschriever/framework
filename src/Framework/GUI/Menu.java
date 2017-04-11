@@ -1,6 +1,7 @@
 package Framework.GUI;
 
 import Framework.Dialogs.ConnectionDialog;
+import Framework.Dialogs.DialogEvents;
 import Framework.Dialogs.DialogInterface;
 import Framework.Start;
 import javafx.application.Platform;
@@ -48,7 +49,12 @@ public class Menu {
     }
 
     public void giveHint(ActionEvent actionEvent) {
-        DialogInterface testDialog = new ConnectionDialog();
+        DialogInterface testDialog = new ConnectionDialog(new DialogEvents() {
+            @Override
+            public void attemptLogin(String userName) {
+                System.out.println("iets");
+            }
+        });
         testDialog.display();
     }
 
