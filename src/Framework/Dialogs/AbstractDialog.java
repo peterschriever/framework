@@ -45,7 +45,7 @@ abstract public class AbstractDialog {
         ButtonType button = new ButtonType(buttonText, ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(button, ButtonType.CANCEL);
 
-        // Enable/Disable connect button depending on whether a ip was entered.
+        // Enable/Disable connect button depending on whether was entered.
         Node connectButton = dialog.getDialogPane().lookupButton(button);
         connectButton.setDisable(true);
 

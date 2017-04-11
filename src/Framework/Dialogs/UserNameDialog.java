@@ -37,9 +37,7 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
     }
 
     private void executeCallback() {
-        // @TODO: implement callback
         eventHandler.attemptLogin(getUserName());
-        System.out.println("Callback: " + getUserName());
     }
 
 

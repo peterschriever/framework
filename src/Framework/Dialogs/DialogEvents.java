@@ -8,4 +8,6 @@ public interface DialogEvents {
 
     void attemptLogin(String userName);
 
+    void challengeReceived(int challengeNr);
+
 }

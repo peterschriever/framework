@@ -54,6 +54,11 @@ public class Menu {
             public void attemptLogin(String userName) {
                 System.out.println("iets");
             }
+
+            @Override
+            public void challengeReceived(int challengeNr) {
+                // test
+            }
         });
         testDialog.display();
     }
