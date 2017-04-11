@@ -57,15 +57,21 @@ public class SimulatedConnection implements ConnectionInterface {
             }
 
             response = new MatchReceivedResponse(gameType, starting, "bot");
+            response.executeCallback();
+            Response turnResponse = new OurTurnResponse("");
+            turnResponse.executeCallback();
+
+            System.out.println("[networking] MatchReceivedResponse   should be sent from SimulatedConnection!");
+            return;
         } else if (lastRequest instanceof ForfeitRequest) {
             response = new ErrorResponse(lastRequest); // @TODO: Request is not supported by SimulatedConnection
         } else if (lastRequest instanceof GetGameListRequest) {
-            List<String> list = new LinkedList<String>();
+            List<String> list = new LinkedList<>();
             list.add("Tic-tac-toe");
             list.add("Othello");
             response = new GameListResponse(list);
         } else if (lastRequest instanceof GetPlayerListRequest) {
-            List<String> list = new LinkedList<String>();
+            List<String> list = new LinkedList<>();
             list.add("bot");
             if (loggedInPlayer != null) {
                 list.add(loggedInPlayer);
@@ -86,7 +92,17 @@ public class SimulatedConnection implements ConnectionInterface {
         } else if (lastRequest instanceof MoveRequest) {
             int[] move = AI.doTurn(gameLogic.getBoard());
             int pos = move[0] * boardSize + move[1];
+
             response = new MoveResponse("bot", "bot move", pos);
+            response.executeCallback();
+
+            if (gameHasEnded()) {
+                // @TODO: send gameEndResponse
+            }
+
+            Response turnResponse = new OurTurnResponse("");
+            turnResponse.executeCallback();
+            return;
         } else if (lastRequest instanceof SubscribeRequest) {
             response = new ErrorResponse(lastRequest); // @TODO: Request is not supported by SimulatedConnection
         }
@@ -94,6 +110,11 @@ public class SimulatedConnection implements ConnectionInterface {
         if (response != null) {
             response.executeCallback();
         }
+    }
+
+    private boolean gameHasEnded() {
+        // @TODO: check with the gameLogic if there is a winner, and who won
+        return false;
     }
 
     @Override
