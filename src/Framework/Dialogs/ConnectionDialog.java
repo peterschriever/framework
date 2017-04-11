@@ -16,6 +16,10 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
     private TextField ip;
     private TextField port;
 
+    public ConnectionDialog(DialogEvents eventHandler) {
+        super(eventHandler);
+    }
+
     public void display() {
         super.createDialog("Create connection", "Please enter your configuration details:");
         super.createGrid();
