@@ -1,6 +1,6 @@
 package Framework.Networking.Request;
 
-import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,14 +11,14 @@ import java.util.List;
  * Part of the framework project.
  */
 public class HelpRequest extends Request {
-    private Connection conn;
+    private ConnectionInterface conn;
     private String forCommand = null;
 
-    public HelpRequest(Connection conn) {
+    public HelpRequest(ConnectionInterface conn) {
         this.conn = conn;
     }
 
-    public HelpRequest(Connection conn, String forCommand) {
+    public HelpRequest(ConnectionInterface conn, String forCommand) {
         this(conn);
         this.forCommand = forCommand;
     }

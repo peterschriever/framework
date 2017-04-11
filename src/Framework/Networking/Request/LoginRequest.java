@@ -1,6 +1,6 @@
 package Framework.Networking.Request;
 
-import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class LoginRequest extends Request {
     private String player;
-    private Connection conn;
+    private ConnectionInterface conn;
 
-    public LoginRequest(Connection conn, String player) {
+    public LoginRequest(ConnectionInterface conn, String player) {
         this.conn = conn;
         this.player = player;
     }
@@ -25,5 +25,9 @@ public class LoginRequest extends Request {
         params.add(player);
         requestExecuted(this);
         conn.sendRequest("login", params);
+    }
+
+    public String getPlayer() {
+        return player;
     }
 }

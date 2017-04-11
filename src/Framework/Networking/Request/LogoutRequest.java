@@ -1,6 +1,6 @@
 package Framework.Networking.Request;
 
-import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import java.io.IOException;
  * Part of the framework project.
  */
 public class LogoutRequest extends Request {
-    private Connection conn;
+    private ConnectionInterface conn;
 
-    public LogoutRequest(Connection conn) {
+    public LogoutRequest(ConnectionInterface conn) {
         this.conn = conn;
     }
 

@@ -2,19 +2,17 @@ package Framework.Networking;
 
 import Framework.Networking.InputObserver.InputStreamObserver;
 import Framework.Networking.InputObserver.InputStreamReader;
-import Framework.Networking.Request.Request;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * Created by peterzen on 2017-03-28.
  * Part of the framework project.
  */
-public class Connection {
+public class Connection implements ConnectionInterface {
     private int port;
     private String host;
     private Socket serverSocket;

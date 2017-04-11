@@ -1,6 +1,6 @@
 package Framework.Networking.Request;
 
-import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import java.io.IOException;
  * Part of the framework project.
  */
 public class ForfeitRequest extends Request {
-    private final Connection conn;
+    private final ConnectionInterface conn;
 
-    public ForfeitRequest(Connection conn) {
+    public ForfeitRequest(ConnectionInterface conn) {
         this.conn = conn;
     }
 

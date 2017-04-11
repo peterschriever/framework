@@ -1,6 +1,7 @@
 package Framework.Networking.Request;
 
 import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 import Framework.Networking.Response.Response;
 
 import java.io.IOException;
@@ -13,9 +14,9 @@ import java.util.List;
  */
 public class MoveRequest extends Request {
     private final String position;
-    private final Connection conn;
+    private final ConnectionInterface conn;
 
-    public MoveRequest(Connection conn, int position) {
+    public MoveRequest(ConnectionInterface conn, int position) {
         this.conn = conn;
         this.position = position+"";
     }
