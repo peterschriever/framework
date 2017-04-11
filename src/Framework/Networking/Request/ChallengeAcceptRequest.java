@@ -1,6 +1,7 @@
 package Framework.Networking.Request;
 
 import Framework.Networking.Connection;
+import Framework.Networking.ConnectionInterface;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,10 +12,10 @@ import java.util.List;
  * Part of the framework project.
  */
 public class ChallengeAcceptRequest extends Request {
-    private final Connection conn;
+    private final ConnectionInterface conn;
     private final String challengeNr;
 
-    public ChallengeAcceptRequest(Connection conn, int challengeNr) {
+    public ChallengeAcceptRequest(ConnectionInterface conn, int challengeNr) {
         this.conn = conn;
         this.challengeNr = challengeNr+"";
     }
