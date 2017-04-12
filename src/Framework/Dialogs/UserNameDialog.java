@@ -22,7 +22,7 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
     public void display() {
         super.createDialog("Create username", "Please enter your username:");
         super.createGrid();
-        this.createButtons();
+        super.createButtons();
         this.addTextFields();
         super.dialog.show();
         this.setUserName(playerName.getText());
@@ -35,12 +35,12 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
         Platform.runLater(playerName::requestFocus);
     }
 
-    private void createButtons() {
-        dialog.getDialogPane().getButtonTypes().addAll(buttonType, ButtonType.CANCEL);
-        dialog.getDialogPane().setContent(grid);
+    public void buttonClickCheck() {
+        super.buttonClickCheck();
     }
 
     public void executeCallback() {
+        this.setUserName(playerName.getText());
         eventHandler.attemptLogin(getUserName());
     }
 
