@@ -76,8 +76,8 @@ public class Start extends Application {
         return scene;
     }
 
-    public void loadGameModule(String path) throws IOException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
-        Runtime.getRuntime().exec("java -jar games/tictactoe.jar");
+    public void loadGameModule(String game) throws IOException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+        Runtime.getRuntime().exec("java -jar games/"+game+".jar");
 //        URL url = new URL(path);
 //        System.out.println("path: " + url.toString());
 //        JarClassLoader loader = new JarClassLoader(url);
