@@ -21,10 +21,12 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
     }
 
     public void display() {
-        super.createDialog("Create connection", "Please enter your configuration details:");
+        super.createDialog("Create server connection", "Please enter your configuration details:");
         super.createGrid();
         this.addTextFields();
+        super.createButtons();
         super.dialog.show();
+        super.buttonClickCheck();
     }
 
     private void addTextFields() {
