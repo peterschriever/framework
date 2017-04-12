@@ -41,7 +41,7 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
         this.setFields();
 
         // @TODO: implement callback
-        System.out.println("Callback: " + getIpAddress() + ":" + getPortNumber());
+        System.out.println("[ONLY LOG YET]Callback: " + getIpAddress() + ":" + getPortNumber());
     }
 
     /*
