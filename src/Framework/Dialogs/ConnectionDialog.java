@@ -25,10 +25,9 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
         super.createGrid();
         this.addTextFields();
         super.dialog.show();
-        this.setFields();
     }
 
-    public void addTextFields() {
+    private void addTextFields() {
         this.ip = new TextField();
         this.port = new TextField();
         super.grid.add(new Label("IP address:"), 0, 0);
@@ -39,6 +38,8 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
     }
 
     public void executeCallback() {
+        this.setFields();
+
         // @TODO: implement callback
         System.out.println("Callback: " + getIpAddress() + ":" + getPortNumber());
     }
