@@ -76,11 +76,7 @@ public class Start extends Application {
         return scene;
     }
 
-    public void loadGameModule(String game) throws IOException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+    public void loadGameModule(String game) throws IOException {
         Runtime.getRuntime().exec("java -jar games/"+game+".jar");
-//        URL url = new URL(path);
-//        System.out.println("path: " + url.toString());
-//        JarClassLoader loader = new JarClassLoader(url);
-//        loader.invokeClass("GameStart", new String[]{"0"}, getStage(), getScene());
     }
 }
