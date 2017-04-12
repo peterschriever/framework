@@ -1,6 +1,7 @@
 package Framework.Dialogs;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
 /**
@@ -21,22 +22,25 @@ public class UserNameDialog extends AbstractDialog implements DialogInterface {
     public void display() {
         super.createDialog("Create username", "Please enter your username:");
         super.createGrid();
+        this.createButtons();
         this.addTextFields();
-        this.createButtons("Create", playerName);
-
-        // If closed, set the fields and execute callback.
-        super.dialog.showAndWait();
+        super.dialog.show();
         this.setUserName(playerName.getText());
-        this.executeCallback();
+        super.buttonClickCheck();
     }
 
-    public void addTextFields() {
+    private void addTextFields() {
         this.playerName = new TextField();
         super.grid.add(playerName, 0, 0);
         Platform.runLater(playerName::requestFocus);
     }
 
-    private void executeCallback() {
+    private void createButtons() {
+        dialog.getDialogPane().getButtonTypes().addAll(buttonType, ButtonType.CANCEL);
+        dialog.getDialogPane().setContent(grid);
+    }
+
+    public void executeCallback() {
         eventHandler.attemptLogin(getUserName());
     }
 

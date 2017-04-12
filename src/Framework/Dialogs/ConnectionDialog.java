@@ -24,12 +24,8 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
         super.createDialog("Create connection", "Please enter your configuration details:");
         super.createGrid();
         this.addTextFields();
-        this.createButtons("Connect", ip);
-
-        // If closed, set the fields and execute callback.
-        super.dialog.showAndWait();
+        super.dialog.show();
         this.setFields();
-        this.executeCallback();
     }
 
     public void addTextFields() {
@@ -42,7 +38,7 @@ public class ConnectionDialog extends AbstractDialog implements DialogInterface 
         Platform.runLater(ip::requestFocus);
     }
 
-    private void executeCallback() {
+    public void executeCallback() {
         // @TODO: implement callback
         System.out.println("Callback: " + getIpAddress() + ":" + getPortNumber());
     }

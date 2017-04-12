@@ -1,10 +1,8 @@
 package Framework.Dialogs;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
-import java.util.Optional;
 
 /**
  * Class ChallengeReceivedDialog
@@ -17,9 +15,10 @@ public class ChallengeReceivedDialog extends AbstractDialog implements DialogInt
     private String challengePlayerName;
     private int challengeNr;
 
-
     public ChallengeReceivedDialog(DialogEvents eventHandler, String challengePlayerName, int challengeNr) {
         super(eventHandler);
+        super.buttonType = ButtonType.YES;
+        super.buttonType2 = ButtonType.NO;
         this.challengePlayerName = challengePlayerName;
         this.challengeNr = challengeNr;
     }
@@ -29,20 +28,15 @@ public class ChallengeReceivedDialog extends AbstractDialog implements DialogInt
         super.createGrid();
         this.createButtons();
         super.dialog.show();
-
-        // Check for OK button pressed
-        final Button accept = (Button) dialog.getDialogPane().lookupButton(ButtonType.YES);
-        accept.addEventFilter(ActionEvent.ACTION, event ->
-                executeCallback()
-        );
+        buttonClickCheck();
     }
 
     private void createButtons() {
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonType, buttonType2);
         dialog.getDialogPane().setContent(grid);
     }
 
-    private void executeCallback() {
+    public void executeCallback() {
         eventHandler.challengeReceived(getChallengeNr());
     }
 
