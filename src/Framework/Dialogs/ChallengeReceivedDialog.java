@@ -31,11 +31,6 @@ public class ChallengeReceivedDialog extends AbstractDialog implements DialogInt
         buttonClickCheck();
     }
 
-    private void createButtons() {
-        dialog.getDialogPane().getButtonTypes().addAll(buttonType, buttonType2);
-        dialog.getDialogPane().setContent(grid);
-    }
-
     public void executeCallback() {
         eventHandler.challengeReceived(getChallengeNr());
     }

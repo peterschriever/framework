@@ -40,7 +40,7 @@ abstract public class AbstractDialog {
         grid.setPadding(new Insets(20, 10, 10, 10));
     }
 
-    private void createButtons() {
+    public void createButtons() {
         dialog.getDialogPane().getButtonTypes().addAll(buttonType, buttonType2);
         dialog.getDialogPane().setContent(grid);
     }
