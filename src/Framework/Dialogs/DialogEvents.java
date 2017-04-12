@@ -10,4 +10,6 @@ public interface DialogEvents {
 
     void challengeReceived(int challengeNr);
 
+    void setupConnection(String ipAddress, String portNr);
+
 }

@@ -49,18 +49,25 @@ public class Menu {
     }
 
     public void giveHint(ActionEvent actionEvent) {
-        DialogInterface testDialog = new ConnectionDialog(new DialogEvents() {
-            @Override
-            public void attemptLogin(String userName) {
-                System.out.println("iets");
-            }
-
-            @Override
-            public void challengeReceived(int challengeNr) {
-                // test
-            }
-        });
-        testDialog.display();
+//        DialogInterface testDialog = new ConnectionDialog(new DialogEvents() {
+//            @Override
+//            public void attemptLogin(String userName) {
+//                System.out.println("test");
+//            }
+//
+//            @Override
+//            public void challengeReceived(int challengeNr) {
+//                // test
+//            }
+//
+//            @Override
+//            public void setupConnection(String ipAdress, int portNr) {
+//                // test
+//            }
+//
+//
+//        });
+//        testDialog.display();
     }
 
     public void undoMove(ActionEvent actionEvent) {
