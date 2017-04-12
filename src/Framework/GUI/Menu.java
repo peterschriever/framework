@@ -22,7 +22,7 @@ public class Menu {
 
     public void newTTTGame(ActionEvent actionEvent) {
         try {
-            Start.getInstance().loadGameModule("jar:file:games/tictactoe.jar!/");
+            Start.getInstance().loadGameModule("tictactoe");
         } catch (NoSuchMethodException | InvocationTargetException | ClassNotFoundException | IOException e) {
             e.printStackTrace(); // @TODO: maybe show a dialog
         }
@@ -30,7 +30,7 @@ public class Menu {
 
     public void newOthGame(ActionEvent actionEvent) {
         try {
-            Start.getInstance().loadGameModule("jar:file:games/othello.jar!/");
+            Start.getInstance().loadGameModule("othello");
         } catch (NoSuchMethodException | InvocationTargetException | ClassNotFoundException | IOException e) {
             e.printStackTrace(); // @TODO: maybe show a dialog
         }

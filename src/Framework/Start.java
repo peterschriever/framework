@@ -31,103 +31,6 @@ public class Start extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-//        String host = Config.get("network", "host");
-//        int port = Integer.parseInt(Config.get("network", "port"));
-
-        // setup receiver
-//        Connection conn = new Connection(host, port, new NetworkEvents() {
-//            @Override
-//            public void challengeCancelled(Response response) {
-//                System.out.println("challengeCancelled event called!");
-//            }
-//
-//            @Override
-//            public void challengeReceived(Response response) {
-//                System.out.println("challengeReceived event called!");
-//            }
-//
-//            @Override
-//            public void ErrorReceived(Response response) {
-//                System.out.println("ErrorReceived event called!");
-//            }
-//
-//            @Override
-//            public void gameEnded(Response response) {
-//                System.out.println("gameEnded event called!");
-//            }
-//
-//            @Override
-//            public void gameListReceived(Response response) {
-//                System.out.println("gameListReceived event called!");
-//            }
-//
-//            @Override
-//            public void matchReceived(Response response) {
-//                System.out.println("matchReceived event called!");
-//            }
-//
-//            @Override
-//            public void moveReceived(Response response) {
-//                System.out.println("moveReceived event called!");
-//            }
-//
-//            @Override
-//            public void ourTurn(Response response) {
-//                System.out.println("ourTurn event called!");
-//            }
-//
-//            @Override
-//            public void playerListReceived(Response response) {
-//                System.out.println("playerListReceived event called!");
-//            }
-//
-//            @Override
-//            public void errorReceived(Response response) {
-//                System.out.println("errorReceived event called!");
-//            }
-//        });
-
-        // setup Response observer
-//        conn.setupInputObserver();
-
-        // concrete command(s) and their invocation(s):
-
-        // test login command
-//        Request loginRequest = new LoginRequest(conn, "player");
-//        loginRequest.execute();
-
-        // test logout command (destroys connection)
-//        Request logoutRequest = new LogoutRequest(conn);
-//        logoutRequest.execute();
-
-        // test get gamelist command
-//        Request getGameListRequest = new GetGameListRequest(conn);
-//        getGameListRequest.execute();
-
-        // test get playerlist command
-//        Request getPlayerListRequest = new GetPlayerListRequest(conn);
-//        getPlayerListRequest.execute();
-
-        // test subscribe command
-//        Request subscribeRequest = new SubscribeRequest(conn, "Tic-tac-toe");
-//        subscribeRequest.execute();
-
-        // test move command
-//        Request moveRequest = new MoveRequest(conn, 2);
-//        moveRequest.execute();
-
-        // test forfeit command
-//        Request forfeitRequest = new ForfeitRequest(conn);
-//        forfeitRequest.execute();
-
-        // test challenge command
-//        Request challengeRequest = new ChallengeRequest(conn, "telnet", "Tic-tac-toe");
-//        challengeRequest.execute();
-
-        // test challenge accept command
-//        Request challengeAcceptRequest = new ChallengeAcceptRequest(conn, 1);
-//        challengeAcceptRequest.execute();
-
         // start-up framework:
         frameworkStart.args = args;
 
@@ -173,9 +76,11 @@ public class Start extends Application {
         return scene;
     }
 
-    public void loadGameModule(String path) throws IOException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
-        URL url = new URL(path);
-        JarClassLoader loader = new JarClassLoader(url);
-        loader.invokeClass("Start", new String[]{"0"}, getStage(), getScene());
+    public void loadGameModule(String game) throws IOException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+        Runtime.getRuntime().exec("java -jar games/"+game+".jar");
+//        URL url = new URL(path);
+//        System.out.println("path: " + url.toString());
+//        JarClassLoader loader = new JarClassLoader(url);
+//        loader.invokeClass("GameStart", new String[]{"0"}, getStage(), getScene());
     }
 }
