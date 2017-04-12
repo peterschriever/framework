@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public final class ResponsePatterns {
     private static final Pattern challengeNrPattern = Pattern.compile("CHALLENGENUMBER: \"(\\d+)\"");
     // @TODO: getting names still doesn't work when a Player takes a name with a ',' (e.g. asd,asd)
-    private static final Pattern listItemsPattern = Pattern.compile("(?<=\")([^,]+)+(?=\")");
+    private static final Pattern listItemsPattern = Pattern.compile("(?:\")([^,]+)+(?=\")");
     private static final Pattern challengerPattern = Pattern.compile("CHALLENGER: \"([^,]+)\"");
     private static final Pattern gameTypePattern = Pattern.compile("GAMETYPE: \"([^,]+)\"");
     private static final Pattern playerToMovePattern = Pattern.compile("PLAYERTOMOVE: \"([^,]+)\"");
@@ -40,10 +40,8 @@ public final class ResponsePatterns {
         ArrayList<String> list = new ArrayList<>();
         Matcher matcher = listItemsPattern.matcher(responseString);
         if (matcher.groupCount() > 0) {
-            int matchIndex = 0;
             while (matcher.find()) {
-                list.add(matcher.group(matchIndex));
-                matchIndex++;
+                list.add(matcher.group(1));
             }
         }
         return list;
