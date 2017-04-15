@@ -22,8 +22,14 @@ public class InputStreamObserver implements Observer {
 
         String responseString = ((String) o);
 
-        System.out.println("InputStreamObserver notified: " + responseString);
+//        System.out.println("InputStreamObserver notified: " + responseString);
         Response response = parseResponse(responseString);
+        // HACK: slow down the responses so that the application has appropriate time to update
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (response != null) {
             response.executeCallback();
         }
